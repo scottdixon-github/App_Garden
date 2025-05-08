@@ -18,6 +18,7 @@ export function IconSymbol({
     <SymbolView
       weight={weight}
       tintColor={color}
+      // The SymbolView component uses resizeMode instead of contentMode
       resizeMode="scaleAspectFit"
       name={name}
       style={[

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Image, TouchableOpacity, KeyboardAvoidingView, Platform, ScrollView, Alert } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, KeyboardAvoidingView, Platform, ScrollView, Alert } from 'react-native';
+import { Image } from 'expo-image';
 import { TextInput, Button, Text, Checkbox } from 'react-native-paper';
 import { Link, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
@@ -98,7 +99,7 @@ export default function SignInScreen() {
           <Image 
             source={require('@/assets/images/paxton_icon.png')} 
             style={styles.logo}
-            resizeMode="contain"
+            contentFit="contain"
           />
           <Text style={styles.appName}>Paxton's Garden</Text>
           <Text style={styles.tagline}>Grow, Eat, and Meditate</Text>
@@ -211,7 +212,6 @@ const styles = StyleSheet.create({
   logo: {
     width: 120,
     height: 120,
-    resizeMode: 'contain',
   },
   appName: {
     fontSize: 28,

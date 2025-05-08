@@ -51,6 +51,7 @@ export default function HomeScreen() {
         <Image
           source={require('@/assets/images/paxton_icon.png')}
           style={styles.headerImage}
+          contentFit="contain"
         />
         <ThemedText type="title" style={styles.headerTitle}>Paxton's Garden</ThemedText>
       </ThemedView>
@@ -151,7 +152,6 @@ const styles = StyleSheet.create({
     width: 110,
     position: 'absolute',
     opacity: 0.8,
-    resizeMode: 'contain',
   },
   headerTitle: {
     color: 'white',

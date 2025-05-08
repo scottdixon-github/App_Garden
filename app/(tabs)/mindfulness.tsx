@@ -82,48 +82,52 @@ export default function MindfulnessScreen() {
   const [activeTab, setActiveTab] = useState('meditations');
   
   const renderMeditationCard = (meditation: any) => (
-    <Card key={meditation.id} style={styles.meditationCard}>
-      <ImageBackground
-        source={{ uri: 'https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80' }}
-        style={styles.meditationImage}
-        imageStyle={{ borderTopLeftRadius: 8, borderTopRightRadius: 8 }}
-      >
-        <View style={styles.meditationOverlay}>
-          <ThemedText style={styles.meditationCategory}>{meditation.category}</ThemedText>
-          <ThemedText style={styles.meditationDuration}>{meditation.duration}</ThemedText>
-        </View>
-      </ImageBackground>
-      
-      <Card.Content style={styles.meditationContent}>
-        <ThemedText type="defaultSemiBold" style={styles.meditationTitle}>
-          {meditation.title}
-        </ThemedText>
-        
-        <ThemedText style={styles.meditationDescription}>
-          {meditation.description}
-        </ThemedText>
-        
-        <View style={styles.benefitsContainer}>
-          {meditation.benefits.map((benefit: string, index: number) => (
-            <View key={index} style={styles.benefitItem}>
-              <MaterialCommunityIcons name="check-circle" size={14} color="#4CAF50" />
-              <ThemedText style={styles.benefitText}>{benefit}</ThemedText>
+    <View key={meditation.id} style={styles.meditationCardWrapper}>
+      <Card style={styles.meditationCard}>
+        <View style={styles.cardContentWrapper}>
+          <ImageBackground
+            source={{ uri: 'https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80' }}
+            style={styles.meditationImage}
+            imageStyle={{ borderTopLeftRadius: 8, borderTopRightRadius: 8 }}
+          >
+            <View style={styles.meditationOverlay}>
+              <ThemedText style={styles.meditationCategory}>{meditation.category}</ThemedText>
+              <ThemedText style={styles.meditationDuration}>{meditation.duration}</ThemedText>
             </View>
-          ))}
+          </ImageBackground>
+          
+          <Card.Content style={styles.meditationContent}>
+            <ThemedText type="defaultSemiBold" style={styles.meditationTitle}>
+              {meditation.title}
+            </ThemedText>
+            
+            <ThemedText style={styles.meditationDescription}>
+              {meditation.description}
+            </ThemedText>
+            
+            <View style={styles.benefitsContainer}>
+              {meditation.benefits.map((benefit: string, index: number) => (
+                <View key={index} style={styles.benefitItem}>
+                  <MaterialCommunityIcons name="check-circle" size={14} color="#4CAF50" />
+                  <ThemedText style={styles.benefitText}>{benefit}</ThemedText>
+                </View>
+              ))}
+            </View>
+          </Card.Content>
+          
+          <Card.Actions>
+            <Button 
+              mode="contained" 
+              style={styles.startButton}
+              icon="play"
+              onPress={() => {}}
+            >
+              Start
+            </Button>
+          </Card.Actions>
         </View>
-      </Card.Content>
-      
-      <Card.Actions>
-        <Button 
-          mode="contained" 
-          style={styles.startButton}
-          icon="play"
-          onPress={() => {}}
-        >
-          Start
-        </Button>
-      </Card.Actions>
     </Card>
+    </View>
   );
 
   const renderTipCard = (tip: any) => (
@@ -271,6 +275,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f5f5f5',
+  },
+  meditationCardWrapper: {
+    marginBottom: 16,
+  },
+  cardContentWrapper: {
+    overflow: 'hidden',
   },
   contentContainer: {
     flexGrow: 1,

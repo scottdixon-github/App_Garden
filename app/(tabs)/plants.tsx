@@ -81,39 +81,43 @@ export default function PlantsScreen() {
   });
 
   const renderPlantCard = (plant: any) => (
-    <Card key={plant.id} style={styles.plantCard}>
-      <Card.Content>
-        <View style={styles.plantHeader}>
-          <ThemedText type="defaultSemiBold" style={styles.plantName}>{plant.name}</ThemedText>
-          <Chip style={styles.typeChip}>{plant.type}</Chip>
+    <View key={plant.id} style={styles.plantCardWrapper}>
+      <Card style={styles.plantCard}>
+        <View style={styles.cardContentWrapper}>
+          <Card.Content>
+            <View style={styles.plantHeader}>
+              <ThemedText type="defaultSemiBold" style={styles.plantName}>{plant.name}</ThemedText>
+              <Chip style={styles.typeChip}>{plant.type}</Chip>
+            </View>
+            
+            <View style={styles.plantDetails}>
+              <View style={styles.detailItem}>
+                <MaterialCommunityIcons name="weather-sunny" size={16} color="#FF9800" />
+                <ThemedText style={styles.detailText}>{plant.sunlight}</ThemedText>
+              </View>
+              <View style={styles.detailItem}>
+                <MaterialCommunityIcons name="water" size={16} color="#2196F3" />
+                <ThemedText style={styles.detailText}>{plant.water}</ThemedText>
+              </View>
+              <View style={styles.detailItem}>
+                <MaterialCommunityIcons name="sprout" size={16} color="#4CAF50" />
+                <ThemedText style={styles.detailText}>{plant.growthTime}</ThemedText>
+              </View>
+            </View>
+            
+            <ThemedText numberOfLines={2} style={styles.description}>
+              {plant.description}
+            </ThemedText>
+          </Card.Content>
+          <Card.Actions>
+            <Button mode="text" onPress={() => {}}>Details</Button>
+            <Button mode="contained" style={styles.addButton} onPress={() => {}}>
+              Add to Garden
+            </Button>
+          </Card.Actions>
         </View>
-        
-        <View style={styles.plantDetails}>
-          <View style={styles.detailItem}>
-            <MaterialCommunityIcons name="weather-sunny" size={16} color="#FF9800" />
-            <ThemedText style={styles.detailText}>{plant.sunlight}</ThemedText>
-          </View>
-          <View style={styles.detailItem}>
-            <MaterialCommunityIcons name="water" size={16} color="#2196F3" />
-            <ThemedText style={styles.detailText}>{plant.water}</ThemedText>
-          </View>
-          <View style={styles.detailItem}>
-            <MaterialCommunityIcons name="sprout" size={16} color="#4CAF50" />
-            <ThemedText style={styles.detailText}>{plant.growthTime}</ThemedText>
-          </View>
-        </View>
-        
-        <ThemedText numberOfLines={2} style={styles.description}>
-          {plant.description}
-        </ThemedText>
-      </Card.Content>
-      <Card.Actions>
-        <Button mode="text" onPress={() => {}}>Details</Button>
-        <Button mode="contained" style={styles.addButton} onPress={() => {}}>
-          Add to Garden
-        </Button>
-      </Card.Actions>
-    </Card>
+      </Card>
+    </View>
   );
 
   return (
@@ -174,6 +178,13 @@ export default function PlantsScreen() {
 const { width } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
+  plantCardWrapper: {
+    marginBottom: 16,
+  },
+  cardContentWrapper: {
+    overflow: 'hidden',
+    borderRadius: 8,
+  },
   container: {
     flex: 1,
     backgroundColor: '#f5f5f5',
