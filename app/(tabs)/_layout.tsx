@@ -1,6 +1,7 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
 import { Platform } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { HapticTab } from '@/components/HapticTab';
 import { IconSymbol } from '@/components/ui/IconSymbol';
@@ -10,12 +11,13 @@ import { useColorScheme } from '@/hooks/useColorScheme';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  const iconSize = 24;
 
   return (
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
+        headerShown: true,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
         tabBarStyle: Platform.select({
@@ -29,15 +31,33 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          title: 'Garden',
+          headerTitle: "Paxton's Garden",
+          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="flower" size={iconSize} color={color} />,
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="plants"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: 'Plants',
+          headerTitle: 'Plant Library',
+          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="sprout" size={iconSize} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="meals"
+        options={{
+          title: 'Meals',
+          headerTitle: 'Healthy Meals',
+          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="food-apple" size={iconSize} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="mindfulness"
+        options={{
+          title: 'Mindful',
+          headerTitle: 'Mindfulness',
+          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="meditation" size={iconSize} color={color} />,
         }}
       />
     </Tabs>
